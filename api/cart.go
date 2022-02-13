@@ -1,0 +1,68 @@
+package api
+
+import (
+	"github.com/gin-gonic/gin"
+	"log"
+	"mozzarella-book/logic"
+)
+
+func DeleteCart(c *gin.Context) {
+	bookID := c.Query("book_id")
+	//todo: 获取uid
+	uid := c.Query("uid")
+
+	err := logic.DeleteCart(bookID, uid)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"status": 50000,
+			"info":   "internal server error",
+		})
+	} else {
+		c.JSON(200, gin.H{
+			"status": 10000,
+			"info":   "success",
+		})
+	}
+}
+
+func AddCart(c *gin.Context) {
+	bookID := c.Query("book_id")
+	//todo: 获取uid
+	uid := c.Query("uid")
+
+	err := logic.AddCart(bookID, uid)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, gin.H{
+			"status": 50000,
+			"info":   "internal server error",
+		})
+	} else {
+		c.JSON(200, gin.H{
+			"status": 10000,
+			"info":   "success",
+		})
+	}
+}
+
+func ShowCart(c *gin.Context) {
+	//todo: 获取uid
+	uid := c.Query("uid")
+
+	carts, err := logic.ShowCart(uid)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, gin.H{
+			"status": 50000,
+			"info":   "internal server error",
+			"data":   carts,
+		})
+	} else {
+		c.JSON(200, gin.H{
+			"status": 10000,
+			"info":   "success",
+			"data":   carts,
+		})
+	}
+
+}
