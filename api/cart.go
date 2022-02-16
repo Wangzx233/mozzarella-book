@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"mozzarella-book/logic"
+	"mozzarella-book/model"
 )
 
 func DeleteCart(c *gin.Context) {
@@ -26,11 +27,20 @@ func DeleteCart(c *gin.Context) {
 }
 
 func AddCart(c *gin.Context) {
-	bookID := c.Query("book_id")
+	var cart model.Cart
+	err := c.BindJSON(cart)
+	if err != nil {
+		log.Println("json bind err : ", err)
+		c.JSON(500, gin.H{
+			"status": 50000,
+			"info":   "json error",
+		})
+		return
+	}
 	//todo: 获取uid
-	uid := c.Query("uid")
+	cart.Uid = c.Query("uid")
 
-	err := logic.AddCart(bookID, uid)
+	err = logic.AddCart(cart)
 	if err != nil {
 		log.Println(err)
 		c.JSON(500, gin.H{

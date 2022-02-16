@@ -4,18 +4,9 @@ import (
 	"mozzarella-book/model"
 )
 
-func AddCart(bookId, uid string) (err error) {
-	//if num == "" {
-	//	err = model.AddCart(bookId, uid)
-	//} else {
-	//	n, err := strconv.Atoi(num)
-	//	if err != nil {
-	//		return err
-	//	}
-	//
-	//	err = model.AddCart(bookId, uid, uint(n))
-	//}
-	err = model.AddCart(bookId, uid)
+func AddCart(cart model.Cart) (err error) {
+
+	err = model.AddCart(cart)
 	return
 }
 
@@ -24,26 +15,25 @@ func DeleteCart(bookId, uid string) (err error) {
 	return
 }
 
-func ShowCart(uid string) (books []Book, err error) {
+func ShowCart(uid string) (carts []Cart, err error) {
 	//查询用户购物车中有的书
-	carts, err := model.ShowCart(uid)
+	modelCarts, err := model.ShowCart(uid)
 	if err != nil {
-		return nil, err
+		return
 	}
 
 	//遍历购物车
-	for _, cart := range carts {
+	for _, cart := range modelCarts {
 		//根据购物车的bookId找到具体收藏的书
 		b, err := model.SearchBookWithBookId(cart.BookId)
 		if err != nil {
-			return nil, err
+			return
 		}
-
-		//把model层book转换为logic层的book
-		tmpBook := ModelBookToLogicBook(b)
-
-		//加入到结果
-		books = append(books, tmpBook)
+		carts = append(carts, Cart{
+			Wear:      cart.Wear,
+			Transport: cart.Transport,
+			Book:      b.ToLogicBook(),
+		})
 	}
 	return
 }

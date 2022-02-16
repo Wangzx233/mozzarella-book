@@ -6,19 +6,19 @@ import (
 	"mozzarella-book/logic"
 )
 
-func AddBook(c *gin.Context) {
-	var book logic.Book
-	err := c.BindJSON(&book)
+func AddValue(c *gin.Context) {
+	var value logic.Value
+	err := c.BindJSON(&value)
 	if err != nil {
 		log.Println("json bind err : ", err)
 		c.JSON(500, gin.H{
 			"status": 50000,
-			"info":   "json par error",
+			"info":   "internal server error",
 		})
 		return
 	}
 
-	err = logic.AddBook(book)
+	err = logic.AddValue(value)
 	if err != nil {
 		log.Println(err)
 		c.JSON(500, gin.H{

@@ -9,8 +9,9 @@ import (
 // GetBooks 通过keyword搜索主页商品，keyword为空即所有商品
 func GetBooks(c *gin.Context) {
 	keyword := c.Query("keyword")
-
-	books, err := logic.GetBooksWithKeyword(keyword)
+	wear := c.Query("wear")
+	
+	books, err := logic.GetBooksWithKeywordAndWear(keyword, wear)
 	if err != nil {
 		log.Println(err)
 		c.JSON(500, gin.H{

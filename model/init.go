@@ -29,7 +29,7 @@ func Init() {
 	}
 
 	DB = db
-	err = DB.AutoMigrate(&Book{}, &Images{}, &Cart{})
+	err = DB.AutoMigrate(&Book{}, &Images{}, &Cart{}, &Value{})
 	if err != nil {
 		log.Println(err)
 		return

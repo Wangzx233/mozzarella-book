@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0594a2d2-7ff1-4d4a-a034-5bb905cebbc3" name="Changes" comment="" />
+    <list default="true" id="0594a2d2-7ff1-4d4a-a034-5bb905cebbc3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/book.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/search.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/nacos-sdk.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/nacos-sdk.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/book.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/search.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/struct.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/transform.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/transform.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/book.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/search.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/struct.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,9 +35,9 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../go" />
+  <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
@@ -45,13 +62,14 @@
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../leetcode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
   </component>
   <component name="RunManager" selected="Go Build.go build main.go">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -82,6 +100,22 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

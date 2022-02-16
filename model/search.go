@@ -5,8 +5,18 @@ import (
 )
 
 func SearchBooksWithKeyword(keyword string) (books []Book, err error) {
-	err = DB.Where("title LIKE ? OR publish_by LIKE ? OR "+
-		"edition LIKE ?", "%"+keyword+"%", "%"+keyword+"%", "%"+keyword+"%").Find(&books).Error
+	err = DB.Preload("Images").Where("title LIKE ? OR publish_by LIKE ? OR "+
+		"edition LIKE ? OR author LIKE ?", "%"+keyword+"%", "%"+keyword+"%", "%"+keyword+"%", "%"+keyword+"%").Find(&books).Error
+
+	if err == gorm.ErrRecordNotFound {
+		return nil, nil
+	}
+	return
+}
+
+func SearchBooksWithKeywordAndWear(keyword, wear string) (books []Book, err error) {
+	err = DB.Preload("Images").Where("(title LIKE ? OR publish_by LIKE ? OR "+
+		"edition LIKE ? OR author LIKE ?) AND wear = ?", "%"+keyword+"%", "%"+keyword+"%", "%"+keyword+"%", "%"+keyword+"%", wear).Find(&books).Error
 
 	if err == gorm.ErrRecordNotFound {
 		return nil, nil
@@ -15,7 +25,7 @@ func SearchBooksWithKeyword(keyword string) (books []Book, err error) {
 }
 
 func SearchBookWithBookId(bookId string) (books Book, err error) {
-	err = DB.Model(&Book{}).Where("book_id=?", bookId).First(&books).Error
+	err = DB.Preload("Images").Model(&Book{}).Where("id=?", bookId).First(&books).Error
 	if err == gorm.ErrRecordNotFound {
 		return Book{}, nil
 	}
@@ -23,7 +33,7 @@ func SearchBookWithBookId(bookId string) (books Book, err error) {
 }
 
 func GetAllBooks() (books []Book, err error) {
-	err = DB.Find(&books).Error
+	err = DB.Preload("Images").Find(&books).Error
 
 	if err == gorm.ErrRecordNotFound {
 		return nil, nil

@@ -2,17 +2,11 @@ package model
 
 import "gorm.io/gorm"
 
-func AddCart(bookId, uid string) error {
-	var cart Cart
-	err := DB.Where("book_id = ? AND uid = ?", bookId, uid).First(&cart).Error
+func AddCart(cart Cart) error {
+	err := DB.Where("book_id = ? AND uid = ?", cart.BookId, cart.Uid).First(&cart).Error
 
 	if err == gorm.ErrRecordNotFound {
-		err = DB.Create(&Cart{
-			Uid:    uid,
-			BookId: bookId,
-		}).Error
-
-		err = nil
+		err = DB.Create(&cart).Error
 	}
 
 	return err
