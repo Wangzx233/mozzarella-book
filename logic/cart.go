@@ -1,12 +1,17 @@
 package logic
 
 import (
+	"errors"
 	"mozzarella-book/model"
 )
 
 func AddCart(cart model.Cart) (err error) {
-
-	err = model.AddCart(cart)
+	bl, err := model.CheckBook(cart.BookId)
+	if bl {
+		err = model.AddCart(cart)
+	} else {
+		return errors.New("book don't exited")
+	}
 	return
 }
 
@@ -27,12 +32,12 @@ func ShowCart(uid string) (carts []Cart, err error) {
 		//根据购物车的bookId找到具体收藏的书
 		b, err := model.SearchBookWithBookId(cart.BookId)
 		if err != nil {
-			return
+			break
 		}
 		carts = append(carts, Cart{
 			Wear:      cart.Wear,
 			Transport: cart.Transport,
-			Book:      b.ToLogicBook(),
+			Book:      ToLogicBook(b),
 		})
 	}
 	return

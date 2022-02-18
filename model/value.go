@@ -8,7 +8,7 @@ func AddValue(value Value) (err error) {
 }
 
 func CheckValue(bookId string, wear int) (bool, error) {
-	err := DB.Model(&Value{}).Where("book_id = ? and wear = ?", bookId, wear).Error
+	err := DB.Model(&Value{}).Where("book_id = ? and wear = ?", bookId, wear).First(&Value{}).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return false, nil

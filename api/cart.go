@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"mozzarella-book/logic"
@@ -28,7 +29,7 @@ func DeleteCart(c *gin.Context) {
 
 func AddCart(c *gin.Context) {
 	var cart model.Cart
-	err := c.BindJSON(cart)
+	err := c.BindJSON(&cart)
 	if err != nil {
 		log.Println("json bind err : ", err)
 		c.JSON(500, gin.H{
@@ -37,15 +38,17 @@ func AddCart(c *gin.Context) {
 		})
 		return
 	}
-	//todo: 获取uid
-	cart.Uid = c.Query("uid")
+
+	//获取uid
+	uid, _ := c.Get("uid")
+	cart.Uid = uid.(string)
 
 	err = logic.AddCart(cart)
 	if err != nil {
 		log.Println(err)
 		c.JSON(500, gin.H{
 			"status": 50000,
-			"info":   "internal server error",
+			"info":   fmt.Sprint(err),
 		})
 	} else {
 		c.JSON(200, gin.H{

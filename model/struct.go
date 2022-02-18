@@ -10,30 +10,36 @@ type Book struct {
 	Edition   string `json:"edition"`
 	Author    string
 
-	Value []Value `json:"value"`
+	Value []Value `gorm:"ForeignKey:BookId;ASSOCIATION_FOREIGNKEY:ID"`
 }
 
 type Images struct {
 	gorm.Model
-	BookId string
-	Large  string
-	Medium string
-	Tiny   string
+	ValueId uint
+	Large   string
+	Medium  string
+	Tiny    string
 }
 
 type Value struct {
 	gorm.Model
 	BookId string
-	Price  string   //价格
+	Price  float64  //价格
 	Wear   int      //磨损层度
-	Images []Images `gorm:"ForeignKey:BookId;ASSOCIATION_FOREIGNKEY:Id"`
+	Images []Images `gorm:"ForeignKey:ValueId;ASSOCIATION_FOREIGNKEY:ID"`
 }
 
 // Cart 购物车
 type Cart struct {
 	gorm.Model
-	Uid       string
-	BookId    string `gorm:"book_id"`
-	Wear      string
-	Transport string
+	Uid       string `json:"uid"`
+	BookId    string `gorm:"book_id" json:"book_id"`
+	Wear      string `json:"wear"`
+	Transport string `json:"transport"`
+}
+
+type UserClickRecord struct {
+	gorm.Model
+	Uid    string
+	BookId string
 }

@@ -12,10 +12,11 @@ type Book struct {
 }
 
 type Value struct {
-	BookId string   `json:"book_id"`
-	Price  string   `json:"price"` //价格
-	Wear   int      `json:"wear"`  //磨损层度
-	Images []Images `json:"images"`
+	ValueId uint     `json:"value_id"`
+	BookId  string   `json:"book_id"`
+	Price   float64  `json:"price"` //价格
+	Wear    int      `json:"wear"`  //磨损层度
+	Images  []Images `json:"images"`
 }
 type Images struct {
 	Large  string `json:"large"`

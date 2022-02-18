@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"mozzarella-book/logic"
@@ -13,7 +14,7 @@ func AddValue(c *gin.Context) {
 		log.Println("json bind err : ", err)
 		c.JSON(500, gin.H{
 			"status": 50000,
-			"info":   "internal server error",
+			"info":   "parameter error",
 		})
 		return
 	}
@@ -23,7 +24,7 @@ func AddValue(c *gin.Context) {
 		log.Println(err)
 		c.JSON(500, gin.H{
 			"status": 50000,
-			"info":   "internal server error",
+			"info":   fmt.Sprint(err),
 		})
 	} else {
 		c.JSON(200, gin.H{

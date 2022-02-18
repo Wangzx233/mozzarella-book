@@ -24,7 +24,7 @@ func AddValue(value Value) (err error) {
 		log.Println(err)
 		return
 	}
-	if !b {
+	if b {
 		err = errors.New("wear existed")
 		return
 	}

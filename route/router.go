@@ -3,6 +3,7 @@ package route
 import (
 	"github.com/gin-gonic/gin"
 	"mozzarella-book/api"
+	"mozzarella-book/middleware"
 )
 
 func InitRoute() {
@@ -12,10 +13,18 @@ func InitRoute() {
 		return
 	}
 
-	book := r.Group("/book")
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSONP(200, "pong")
+	})
+
+	book := r.Group("/book", middleware.CheckUid)
 
 	//添加书
 	book.POST("/", api.AddBook)
+	//添加磨损
+	book.POST("/value", api.AddValue)
+	//点击书
+	book.GET("/click", api.ClickBook)
 	//主界面和搜索
 	book.GET("/search", api.GetBooks)
 	//删除购物车中的书

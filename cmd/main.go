@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	model.Init()
+	model.InitMysql()
+	
 	register.InitRegister()
 	route.InitRoute()
 }

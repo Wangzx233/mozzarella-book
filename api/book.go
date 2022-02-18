@@ -32,3 +32,21 @@ func AddBook(c *gin.Context) {
 		})
 	}
 }
+
+func ClickBook(c *gin.Context) {
+	bookId := c.Query("book_id")
+	uid, _ := c.Get("uid")
+
+	success := logic.ClickBook(bookId, uid.(string))
+	if !success {
+		c.JSON(500, gin.H{
+			"status": 50000,
+			"info":   "internal server error",
+		})
+	} else {
+		c.JSON(200, gin.H{
+			"status": 10000,
+			"info":   "success",
+		})
+	}
+}
