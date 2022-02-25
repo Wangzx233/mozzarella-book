@@ -10,23 +10,27 @@ import (
 var DB *gorm.DB
 
 var (
-	//username = "root"
-	//password = ""
-	//host     = ""
-	//port     = "3306"
-	//dbname   = "mozzarella-book"
-	username = "root"
-	password = "123456"
-	host     = "localhost"
-	port     = "3306"
-	dbname   = "mozzarella_book"
+	remoteUsername = "root"
+	remotePassword = "123456"
+	remoteHost     = "mariadb"
+	remotePort     = "3306"
+	remoteDbname   = "mozzarella-book"
+	username       = "root"
+	password       = "root"
+	host           = "localhost"
+	port           = "3306"
+	dbname         = "mozzarella_book"
 )
 
 func InitMysql() {
 	dsn := username + ":" + password + "@(" + host + ":" + port + ")/" + dbname + "?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	dsn1 := remoteUsername + ":" + remotePassword + "@(" + remoteHost + ":" + remotePort + ")/" + remoteDbname + "?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn1), &gorm.Config{})
 	if err != nil {
-		panic(err)
+		db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	DB = db

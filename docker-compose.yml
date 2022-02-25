@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+
+  mozzarella-book:
+    build: .
+    ports:
+      - "8082:8082"
