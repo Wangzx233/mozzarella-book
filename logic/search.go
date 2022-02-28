@@ -26,6 +26,7 @@ func GetBooksWithKeyword(keyword, page, seed, uid string) (books []Book, sd int,
 	}
 
 	for _, book := range modelBooks {
+
 		//把model层book转换为logic层的book并加入
 		books = append(books, ToLogicBook(book))
 	}

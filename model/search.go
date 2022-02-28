@@ -30,9 +30,9 @@ func SearchBooksWithKeywordAndWear(keyword, wear string) (books []Book, err erro
 }
 
 func SearchBookWithBookId(bookId string) (books Book, err error) {
-	err = DB.Preload("Value").Preload("Value.Images").Model(&Book{}).Where("id=?", bookId).First(&books).Error
+	err = DB.Preload("Value").Preload("Value.Images").Where("id=?", bookId).First(&books).Error
 	if err == gorm.ErrRecordNotFound {
-		return Book{}, nil
+		err = nil
 	}
 	return
 }

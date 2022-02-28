@@ -57,8 +57,23 @@ func ToLogicBook(b model.Book) (LogicBook Book) {
 	for _, value := range b.Value {
 		LogicBook.Value = append(LogicBook.Value, ToLogicValue(value))
 	}
-
+	//按照磨损排序（7-8-10-5）
+	sortValue(&LogicBook.Value)
 	return
+}
+
+//todo:可优化排序时间复杂度
+//按照磨损排序（7-8-10-5）
+func sortValue(values *[]Value) {
+	var wearWeight = map[int]int{70: 1, 80: 2, 100: 3, 50: 4}
+
+	for i := 0; i < len(*values)-1; i++ {
+		for j := i + 1; j < len(*values); j++ {
+			if wearWeight[(*values)[i].Wear] > wearWeight[(*values)[j].Wear] {
+				(*values)[i], (*values)[i+1] = (*values)[j], (*values)[i]
+			}
+		}
+	}
 }
 
 func ToLogicValue(modelValue model.Value) (logicValue Value) {

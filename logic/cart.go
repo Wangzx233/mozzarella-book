@@ -2,6 +2,7 @@ package logic
 
 import (
 	"errors"
+	"log"
 	"mozzarella-book/model"
 )
 
@@ -26,7 +27,7 @@ func ShowCart(uid string) (carts []Cart, err error) {
 	if err != nil {
 		return
 	}
-
+	log.Println(uid)
 	//遍历购物车
 	for _, cart := range modelCarts {
 		//根据购物车的bookId找到具体收藏的书

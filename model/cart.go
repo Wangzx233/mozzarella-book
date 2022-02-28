@@ -18,7 +18,7 @@ func DeleteCart(bookId, uid string) error {
 }
 
 func ShowCart(uid string) (carts []Cart, err error) {
-	err = DB.Model(&Cart{}).Where("uid=?", uid).Find(&carts).Error
+	err = DB.Where("uid=?", uid).Find(&carts).Error
 	if err == gorm.ErrRecordNotFound {
 		return nil, nil
 	}

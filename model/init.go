@@ -14,7 +14,7 @@ var (
 	remotePassword = "123456"
 	remoteHost     = "mariadb"
 	remotePort     = "3306"
-	remoteDbname   = "mozzarella-book"
+	remoteDbname   = "mozzarella_book"
 	username       = "root"
 	password       = "root"
 	host           = "localhost"

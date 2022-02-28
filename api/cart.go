@@ -60,9 +60,9 @@ func AddCart(c *gin.Context) {
 
 func ShowCart(c *gin.Context) {
 	//todo: 获取uid
-	uid := c.Query("uid")
+	uid, _ := c.Get("uid")
 
-	carts, err := logic.ShowCart(uid)
+	carts, err := logic.ShowCart(uid.(string))
 	if err != nil {
 		log.Println(err)
 		c.JSON(500, gin.H{
