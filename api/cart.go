@@ -9,11 +9,20 @@ import (
 )
 
 func DeleteCart(c *gin.Context) {
-	bookID := c.Query("book_id")
-	//todo: 获取uid
-	uid := c.Query("uid")
+	var cart model.Cart
+	err := c.ShouldBindJSON(&cart)
+	if err != nil {
+		log.Println("json bind err : ", err)
+		c.JSON(500, gin.H{
+			"status": 50000,
+			"info":   "json error",
+		})
+		return
+	}
 
-	err := logic.DeleteCart(bookID, uid)
+	uid, _ := c.Get("uid")
+	cart.Uid = uid.(string)
+	err = logic.DeleteCart(cart.BookId, cart.Uid, cart.Wear)
 	if err != nil {
 		c.JSON(500, gin.H{
 			"status": 50000,

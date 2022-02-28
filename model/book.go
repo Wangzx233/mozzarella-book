@@ -24,6 +24,19 @@ func CheckBook(bookId string) (bool, error) {
 	return true, nil
 }
 
+// CheckWear 查看书是否已存在,true为存在
+func CheckWear(bookId string, wear int) (bool, error) {
+
+	err := DB.Model(&Value{}).Where("book_id = ? and wear = ?", bookId, wear).First(&Value{}).Error
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
 func ClickBook(bookId, uid string) (err error) {
 	err = DB.Model(&Book{}).Where("id = ?", bookId).First(&Book{}).Error
 	if err != nil {

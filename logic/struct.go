@@ -26,7 +26,7 @@ type Images struct {
 
 // Cart 购物车
 type Cart struct {
-	Wear      string `json:"wear"`
+	Wear      int    `json:"wear"`
 	Transport string `json:"transport"`
 	Book
 }

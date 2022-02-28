@@ -12,8 +12,8 @@ func AddCart(cart Cart) error {
 	return err
 }
 
-func DeleteCart(bookId, uid string) error {
-	err := DB.Where("book_id = ? AND uid = ?", bookId, uid).Delete(&Cart{}).Error
+func DeleteCart(bookId, uid string, wear int) error {
+	err := DB.Where("book_id = ? AND uid = ? AND wear = ?", bookId, uid, wear).Delete(&Cart{}).Error
 	return err
 }
 

@@ -33,7 +33,6 @@ func AddBook(c *gin.Context) {
 	}
 }
 
-//todo: 用户重复点击
 func ClickBook(c *gin.Context) {
 	bookId := c.Query("book_id")
 	uid, _ := c.Get("uid")

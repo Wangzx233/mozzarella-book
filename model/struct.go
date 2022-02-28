@@ -34,7 +34,7 @@ type Cart struct {
 	gorm.Model
 	Uid       string `json:"uid"`
 	BookId    string `gorm:"book_id" json:"book_id"`
-	Wear      string `json:"wear"`
+	Wear      int    `json:"wear"`
 	Transport string `json:"transport"`
 }
 

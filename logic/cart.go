@@ -7,17 +7,24 @@ import (
 )
 
 func AddCart(cart model.Cart) (err error) {
+	// 检测wear是否存在
+	wearExited, err := model.CheckWear(cart.BookId, cart.Wear)
+	if err != nil {
+		log.Println("check wear err : ", err)
+		return errors.New("err")
+	}
+
 	bl, err := model.CheckBook(cart.BookId)
-	if bl {
+	if bl && wearExited {
 		err = model.AddCart(cart)
 	} else {
-		return errors.New("book don't exited")
+		return errors.New("book or wear don't exited")
 	}
 	return
 }
 
-func DeleteCart(bookId, uid string) (err error) {
-	err = model.DeleteCart(bookId, uid)
+func DeleteCart(bookId, uid string, wear int) (err error) {
+	err = model.DeleteCart(bookId, uid, wear)
 	return
 }
 
