@@ -6,14 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0594a2d2-7ff1-4d4a-a034-5bb905cebbc3" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/book.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/cart.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/nacos-sdk.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/nacos-sdk.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logic/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/struct.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/transform.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/transform.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/value.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/value.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/book.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/struct.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

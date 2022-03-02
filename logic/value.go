@@ -7,7 +7,7 @@ import (
 )
 
 func AddValue(value Value) (err error) {
-	var rightWears = [4]int{100, 80, 70, 50}
+	var rightWears = [4]int{100, 90, 70, 50}
 	var r = false
 	for _, rightWear := range rightWears {
 		if value.Wear == rightWear {

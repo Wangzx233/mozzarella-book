@@ -25,16 +25,17 @@ func CheckBook(bookId string) (bool, error) {
 }
 
 // CheckWear 查看书是否已存在,true为存在
-func CheckWear(bookId string, wear int) (bool, error) {
-
-	err := DB.Model(&Value{}).Where("book_id = ? and wear = ?", bookId, wear).First(&Value{}).Error
+func CheckWear(bookId string, wear int) (exited bool, err error) {
+	exited = true
+	err = DB.Model(&Value{}).Where("book_id = ? and wear = ?", bookId, wear).First(&Value{}).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
-			return false, nil
+			exited = false
+			err = nil
 		}
-		return false, err
+		return
 	}
-	return true, nil
+	return
 }
 
 func ClickBook(bookId, uid string) (err error) {

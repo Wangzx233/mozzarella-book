@@ -22,7 +22,7 @@ func DeleteCart(c *gin.Context) {
 
 	uid, _ := c.Get("uid")
 	cart.Uid = uid.(string)
-	err = logic.DeleteCart(cart.BookId, cart.Uid, cart.Wear)
+	err = logic.DeleteCart(cart.BookId, cart.Uid)
 	if err != nil {
 		c.JSON(500, gin.H{
 			"status": 50000,

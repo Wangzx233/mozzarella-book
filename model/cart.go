@@ -12,8 +12,8 @@ func AddCart(cart Cart) error {
 	return err
 }
 
-func DeleteCart(bookId, uid string, wear int) error {
-	err := DB.Where("book_id = ? AND uid = ? AND wear = ?", bookId, uid, wear).Delete(&Cart{}).Error
+func DeleteCart(bookId, uid string) error {
+	err := DB.Where("book_id = ? AND uid = ?", bookId, uid).Delete(&Cart{}).Error
 	return err
 }
 
@@ -22,5 +22,21 @@ func ShowCart(uid string) (carts []Cart, err error) {
 	if err == gorm.ErrRecordNotFound {
 		return nil, nil
 	}
+	return
+}
+
+func CheckCart(bookId, uid string) (exited bool, err error) {
+	exited = true
+	err = DB.Model(&Cart{}).Where("book_id = ? and uid = ?", bookId, uid).First(&Cart{}).Error
+	if err == gorm.ErrRecordNotFound {
+		exited = false
+		err = nil
+	}
+
+	return
+}
+
+func (cart *Cart) UpdateCart() (err error) {
+	err = DB.Model(Cart{}).Where("book_id = ?", cart.BookId).Updates(&cart).Error
 	return
 }
