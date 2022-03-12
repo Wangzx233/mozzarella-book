@@ -1,0 +1,47 @@
+syntax = "proto3"; // 版本声明，使用Protocol Buffers v3版本
+
+package pb; // 包名
+
+option go_package = "mozzarella-book/rpc/pb;rpc";
+
+// 定义服务
+service MozzarellaBook {
+  // Ping 方法
+  rpc Ping (PingRequest) returns (PingReply) {}
+
+  rpc GetBookInfoByBookId (BookId) returns (BookInfo) {}
+}
+
+// 请求消息
+message PingRequest {
+}
+
+// 响应消息
+message PingReply {
+  string Pong = 1;
+}
+
+message BookId {
+  string BookId =1;
+}
+
+message BookInfo {
+  string Title = 1;
+  string PublishBy =2;
+  string Edition =3;
+  string Author =4;
+  repeated Value Values =5;
+
+}
+
+message Image {
+  string Large = 1;
+  string Medium =2;
+  string tiny =3;
+}
+
+message Value {
+  float Price = 1;
+  int64 wear =2;
+  repeated Image Images =3;
+}
