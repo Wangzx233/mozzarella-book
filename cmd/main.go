@@ -2,13 +2,13 @@ package main
 
 import (
 	"mozzarella-book/model"
-	"mozzarella-book/register"
 	"mozzarella-book/route"
+	"mozzarella-book/rpc"
 )
 
 func main() {
 	model.InitMysql()
-	
-	register.InitRegister()
+
+	rpc.InitRegister()
 	route.InitRoute()
 }
