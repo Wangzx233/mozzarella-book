@@ -9,6 +9,6 @@ import (
 func main() {
 	model.InitMysql()
 
-	rpc.InitRegister()
+	go rpc.InitRegister()
 	route.InitRoute()
 }
